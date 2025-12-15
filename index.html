@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>오락실 인형뽑기 </title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:"Noto Sans KR",sans-serif;
+  transition: background 0.8s, color 0.6s;
+  overflow-x:hidden;
+}
+
+body.dark{
+  background:#020617;
+  color:#f8fafc;
+}
+body.light{
+  background:#f8fafb;
+  color:#0f172a;
+}
+
+body.dark p{color:#e5e7eb;}
+body.light p{color:#334155;}
+
+/* ===== FIXED TOP BAR ===== */
+.topbar{
+  position:fixed;
+  top:0;left:0;right:0;
+  padding:14px 40px;
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  background:rgba(0,0,0,0.5);
+  color:#fff;
+  z-index:1000;
+}
+
+/* ===== HEADER (신문 느낌) ===== */
+header{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:200px 20px 160px;
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 60%);
+}
+
+header small{
+  letter-spacing:3px;
+  opacity:.6;
+}
+
+header h1{
+  font-size:clamp(56px,10vw,140px);
+  line-height:1;
+  margin:40px 0;
+  letter-spacing:-2px;
+}
+
+header p{
+  max-width:720px;
+  margin:0 auto;
+  font-size:18px;
+  line-height:1.9;
+  opacity:.9;
+}
+
+/* ===== SECTION ===== */
+.section{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:160px 20px;
+  position:relative;
+}
+
+/* background color scroll */
+.bg1{background:#020617;}
+.bg2{background:#0f172a;}
+.bg3{background:#020617;}
+.bg4{background:#111827;}
+.bg5{background:#020617;}
+.bg6{background:#0f172a;}
+
+body.light .bg1,
+body.light .bg2,
+body.light .bg3,
+body.light .bg4,
+body.light .bg5,
+body.light .bg6{
+  background:#f8fafb;
+}
+
+/* ===== CARD ===== */
+.card{
+  max-width:900px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(14px);
+  border-radius:24px;
+  padding:80px 70px;
+  opacity:0;
+  transform:translateY(80px);
+  transition:1s ease;
+}
+
+body.light .card{
+  background:#ffffff;
+  box-shadow:0 30px 60px rgba(0,0,0,0.08);
+}
+
+.card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.card h2{
+  font-size:48px;
+  margin-bottom:30px;
+  letter-spacing:-1px;
+}
+
+.card img{
+  width:100%;
+  border-radius:18px;
+  margin:40px 0;
+}
+
+.card p{
+  font-size:17px;
+  line-height:2;
+}
+
+/* ===== PARALLAX TEXT ===== */
+.parallax{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:160px;
+  font-weight:800;
+  opacity:0.03;
+  white-space:nowrap;
+  pointer-events:none;
+}
+
+/* ===== TOGGLE ===== */
+.toggle{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  padding:12px 18px;
+  border-radius:30px;
+  font-size:12px;
+  background:rgba(255,255,255,0.2);
+  cursor:pointer;
+  z-index:1000;
+}
+body.light .toggle{
+  background:#0f172a;
+  color:#fff;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  padding:200px 20px;
+  text-align:center;
+  opacity:.6;
+}
+</style>
+</head>
+
+<body class="dark">
+
+<div class="toggle" onclick="toggleTheme()">DARK / LIGHT</div>
+
+<header>
+  <div>
+    <h1>인형뽑기</h1>
+    <p>
+      작고 단순한 게임이지만,<br>
+      왜 우리는 이 앞에서 쉽게 멈추지 못할까.<br><br>
+      이 디지털 뉴스카드는 오락실 한 켠에 놓인 인형뽑기를 통해
+      반복, 기대, 그리고 멈추지 못하는 감정의 구조를 들여다본다.
+    </p>
+  </div>
+</header>
+
+<section class="section bg1">
+  <div class="parallax">FAMILIAR</div>
+  <div class="card">
+    <h2>익숙함이 주는 안심</h2>
+    <img src="Frame1.jpg">
+    <p>
+      인형뽑기는 설명이 필요 없는 게임이다.
+      조작은 단순하고, 규칙은 직관적이다.
+      이 ‘익숙함’은 사람을 망설임 없이 참여하게 만든다.
+      오락실에 들어섰을 때 가장 먼저 시선이 향하는 이유도 여기에 있다.
+    </p>
+  </div>
+</section>
+
+<section class="section bg2">
+  <div class="parallax">ALMOST</div>
+  <div class="card">
+    <h2>거의 잡았던 기억</h2>
+    <img src="Frame2.jpg">
+    <p>
+      인형이 집게에 걸렸다가 떨어지는 순간.
+      실패의 기억보다 ‘거의 성공했다’는 감각이 더 오래 남는다.
+      이 애매한 성공 경험은 사람을 다시 버튼 앞으로 데려온다.
+    </p>
+  </div>
+</section>
+
+<section class="section bg3">
+  <div class="parallax">SMALL COST</div>
+  <div class="card">
+    <h2>작게 느껴지는 지출</h2>
+    <img src="Frame3.jpg">
+    <p>
+      한 번의 비용은 크지 않다.
+      그래서 쉽게 반복된다.
+      그러나 이 ‘작은 선택’의 누적은
+      우리가 생각한 것보다 더 큰 결과로 이어진다.
+    </p>
+  </div>
+</section>
+
+<section class="section bg4">
+  <div class="parallax">ESCAPE</div>
+  <div class="card">
+    <h2>놀이가 되는 순간</h2>
+    <img src="Frame4.jpg">
+    <p>
+      인형뽑기는 단순한 게임을 넘어
+      잠깐 현실을 벗어날 수 있는 감정의 틈이 된다.
+      이 틈은 반복될수록 더 자주 찾게 된다.
+    </p>
+  </div>
+</section>
+
+<section class="section bg5">
+  <div class="parallax">DEPENDENCE</div>
+  <div class="card">
+    <h2>의존이 되는 지점</h2>
+    <img src="Frame5.jpg">
+    <p>
+      문제가 되는 것은 인형뽑기가 아니다.
+      그것에 기대는 마음이 점점 커질 때,
+      우리는 멈추는 타이밍을 놓치게 된다.
+    </p>
+  </div>
+</section>
+
+<section class="section bg6">
+  <div class="parallax">BALANCE</div>
+  <div class="card">
+    <h2>마무리</h2>
+    <img src="Frame6.jpg">
+    <p>
+      인형뽑기는 소소한 즐거움이 될 수 있다.
+      중요한 것은 그 즐거움이
+      삶의 균형을 넘어서지 않도록
+      스스로 선을 긋는 일이다.
+    </p>
+  </div>
+</section>
+
+<footer>
+  디지털미디어디자인<br>
+  25101009 홀랑
+</footer>
+
+<script>
+/* scroll animation */
+const cards=document.querySelectorAll(".card");
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)e.target.classList.add("show");
+  });
+},{threshold:0.3});
+cards.forEach(c=>io.observe(c));
+
+function toggleTheme(){
+  document.body.classList.toggle("dark");
+  document.body.classList.toggle("light");
+}
+</script>
+
+</body>
+</html>
